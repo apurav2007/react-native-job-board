@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Text, ListView,Image } from 'react-native'
+import { View, Text, ListView,Image, TouchableOpacity } from 'react-native'
 import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
 import {Images, Metrics} from '../Themes'
 import { connect } from 'react-redux'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 
 // For empty lists
 import AlertMessage from '../Components/AlertMessage'
@@ -19,23 +20,36 @@ class ListviewExample extends React.Component {
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
     const dataObjects = [
-      {title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
 
 
     ]
@@ -65,8 +79,9 @@ class ListviewExample extends React.Component {
   * e.g.
     return <MyCustomCell title={rowData.title} description={rowData.description} />
   *************************************************************/
-  renderRow (rowData) {
+renderRow (rowData) {
     return (
+      <TouchableOpacity onPress={() => NavigationActions.login()} >
       <View style={styles.row}>
         <Image source={Images.logo} style ={styles.image} />
         <View style={styles.row2} >
@@ -78,7 +93,12 @@ class ListviewExample extends React.Component {
         </View>
 
       </View>
+      </TouchableOpacity>
     )
+  }
+
+  goDetailScreen(){
+    NavigationActions.login();
   }
 
   /* ***********************************************************
