@@ -19,7 +19,7 @@ class ListviewExample extends React.Component {
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
     const dataObjects = [
-      {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
+      {title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
       {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
       {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
       {title: 'Site Reliability Engineer (SRE)', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
@@ -70,8 +70,8 @@ class ListviewExample extends React.Component {
       <View style={styles.row}>
         <Thumbnail square size={80} source={Images.logo} />
         <View style={styles.row2} >
-          <Text style={styles.boldLabel}>{rowData.title}</Text>
-          <Text style={styles.label}>{rowData.location}</Text>
+          <Text style={styles.boldLabelTitle}>{rowData.title}</Text>
+          <Text style={styles.boldLabel}>{rowData.location}</Text>
           <Text style={styles.label}>{rowData.company}</Text>
           <Text style={styles.label}>{rowData.type}</Text>
           <Text style={styles.label}>{rowData.created}</Text>

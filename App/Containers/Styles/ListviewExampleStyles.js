@@ -6,26 +6,31 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Metrics.navBarHeight,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.frost
   },
   row: {
     flex: 1,
     backgroundColor: Colors.snow,
-    marginVertical: Metrics.smallMargin,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    paddingBottom: 20
   },
   row2: {
-    marginLeft: Metrics.baseMargin,
+    marginLeft: 20,
 
+  },
+  boldLabelTitle: {
+    fontWeight: 'bold',
+    color: Colors.blue,
+    marginTop: Metrics.baseMargin
   },
   boldLabel: {
     fontWeight: 'bold',
     color: Colors.coal,
-    marginVertical: Metrics.smallMargin
-  },
+},
   label: {
-    color: Colors.coal,
-    marginBottom: Metrics.smallMargin
+    color: Colors.coal
   },
   image: {
     height:50,
