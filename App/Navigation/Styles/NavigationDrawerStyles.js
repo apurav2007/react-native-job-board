@@ -2,7 +2,7 @@ import {Colors} from '../../Themes/'
 
 export default {
   drawer: {
-    backgroundColor: Colors.background
+    backgroundColor: Colors.cloud
   },
   main: {
     backgroundColor: Colors.clear

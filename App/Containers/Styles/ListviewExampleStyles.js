@@ -36,8 +36,8 @@ export default StyleSheet.create({
     height:50,
     width:50,
     paddingVertical: Metrics.doubleBaseMargin,
-    marginRight:10,
-    marginLeft: Metrics.baseMargin
+    marginLeft: 15,
+    marginTop : 15
   },
   listContent: {
     marginTop: Metrics.baseMargin

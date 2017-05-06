@@ -68,7 +68,7 @@ class ListviewExample extends React.Component {
   renderRow (rowData) {
     return (
       <View style={styles.row}>
-        <Thumbnail square size={80} source={Images.logo} />
+        <Image source={Images.logo} style ={styles.image} />
         <View style={styles.row2} >
           <Text style={styles.boldLabelTitle}>{rowData.title}</Text>
           <Text style={styles.boldLabel}>{rowData.location}</Text>
