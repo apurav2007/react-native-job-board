@@ -7,6 +7,7 @@ import NavigationDrawer from './NavigationDrawer'
 import LaunchScreen from '../Containers/LaunchScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import ListviewExample from '../Containers/ListviewExample'
+import JobDetail from '../Containers/JobDetail'
 import ListviewGridExample from '../Containers/ListviewGridExample'
 import ListviewSearching from '../Containers/ListviewSearchingExample'
 import ListviewSections from '../Containers/ListviewSectionsExample'
@@ -24,6 +25,7 @@ class NavigationRouter extends Component {
             <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen' hideNavBar />
             <Scene  key='login' component={LoginScreen} title='login' hideNavBar />
             <Scene initial  key='listview' component={ListviewExample} title='Job List' />
+            <Scene  key='jobdetail' component={JobDetail} title='Job Detail' />
             <Scene key='listviewgrid' component={ListviewGridExample} title='Job Babu - Job List' />
             <Scene key='listviewsearch' component={ListviewSearching} title='Job Babu - Search' />
             <Scene  key='listviewsections' component={ListviewSections} title='Job Babu - Search' />

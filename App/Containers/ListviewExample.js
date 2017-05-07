@@ -81,7 +81,7 @@ class ListviewExample extends React.Component {
   *************************************************************/
 renderRow (rowData) {
     return (
-      <TouchableOpacity onPress={() => NavigationActions.login()} >
+      <TouchableOpacity onPress={() => NavigationActions.jobdetail()} >
       <View style={styles.row}>
         <Image source={Images.logo} style ={styles.image} />
         <View style={styles.row2} >
