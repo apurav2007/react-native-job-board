@@ -1,7 +1,7 @@
 #  React Native Job Board
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
-* Standard compliant React Native App Utilizing 
+* Standard compliant React Native App Utilizing
 
 ## :arrow_up: How to Setup
 
@@ -22,3 +22,4 @@
     * Run Genymotion
     * run `react-native run-android`
 
+![React native job board](https://github.com/apurav2007/react-native-job-board/blob/master/App/Images/screens.gif)
