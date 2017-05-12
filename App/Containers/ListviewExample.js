@@ -11,15 +11,21 @@ import AlertMessage from '../Components/AlertMessage'
 // Styles
 import styles from './Styles/ListviewExampleStyles'
 
+import {api} from  "../Services/Api"
+
 class ListviewExample extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
+    this.state = {
+             dataObjects: {}
+         }
     /* ***********************************************************
     * STEP 1
     * This is an array of objects with the properties you desire
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
-    const dataObjects = [
+    
+    /*const dataObjects = [
       {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
       {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
       {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
@@ -52,7 +58,7 @@ class ListviewExample extends React.Component {
       {id:'1', title: 'Site Reliability Engineer (SRE) 1', location: 'Remote/Anywhere',type:'Full Time',company:'CircleCI',created :'24 May 2017', logo: 'http://github-jobs.s3.amazonaws.com/3f106ece-3113-11e7-81a3-7a4e0d644d3b.png'},
 
 
-    ]
+    ]*/
 
     /* ***********************************************************
     * STEP 2
@@ -70,6 +76,21 @@ class ListviewExample extends React.Component {
       dataSource: ds.cloneWithRows(dataObjects)
     }
   }
+
+
+  componentWillMount () {
+  this.loadjobs()
+}
+loadjobs() {
+  console.log('access token at home screen pt : ')
+  api.getjob()
+  .then((response) => {
+    console.log(response.data)
+     this.setState({dataObjects : response.data})
+       console.log('Health feed Response : ', this.state.dataObjects)
+  })
+
+}
 
   /* ***********************************************************
   * STEP 3
@@ -95,10 +116,6 @@ renderRow (rowData) {
       </View>
       </TouchableOpacity>
     )
-  }
-
-  goDetailScreen(){
-    NavigationActions.login();
   }
 
   /* ***********************************************************
