@@ -16,7 +16,8 @@ import styles from './Styles/JobDetailStyles'
 class JobDetail extends React.Component {
 
   constructor (props) {
-    super(props)
+    super(props);
+    console.log(this.props);
   }
 
   render () {
@@ -28,10 +29,10 @@ class JobDetail extends React.Component {
 
                     <CardItem style={{flex: 1, flexDirection: 'column',alignItems:'flex-start'}} >
 
-                          <Text  style={styles.boldLabelTitle}> React Developer  </Text>
-                          <Text  style={styles.boldLabel}> TCS  </Text>
-                          <Text  style={styles.label}> Jaipur, Rajasthan, India  </Text>
-                          <Text style={styles.labeldate} > Posted on 1 day ago  </Text>
+                          <Text  style={styles.boldLabelTitle}>{this.props.job.title}  </Text>
+                          <Text  style={styles.boldLabel}> {this.props.job.company}  </Text>
+                          <Text  style={styles.label}> {this.props.job.location}   </Text>
+                          <Text style={styles.labeldate} > {this.props.job.created_at}   </Text>
                     </CardItem>
 
                   </Card>

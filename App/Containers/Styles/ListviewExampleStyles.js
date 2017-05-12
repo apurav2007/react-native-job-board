@@ -8,6 +8,9 @@ export default StyleSheet.create({
     marginTop: Metrics.navBarHeight,
     backgroundColor: Colors.frost
   },
+  content:{
+    marginTop: 50,
+  },
   row: {
     flex: 1,
     backgroundColor: Colors.snow,
@@ -21,6 +24,7 @@ export default StyleSheet.create({
 
   },
   boldLabelTitle: {
+    flex:1,
     fontWeight: 'bold',
     color: Colors.blue,
     marginTop: Metrics.baseMargin

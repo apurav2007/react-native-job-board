@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ListView,Image, TouchableOpacity } from 'react-native'
+import { View, Text, ListView,Image, TouchableOpacity,ScrollView } from 'react-native'
 import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
 import {Images, Metrics} from '../Themes'
 import { connect } from 'react-redux'
@@ -28,12 +28,12 @@ componentWillMount () {
   this.loadjobs()
 }
 loadjobs() {
-  console.log('access token at home screen pt : ')
+
   api.getjob()
   .then((response) => {
     console.log(response.data)
      this.setState({joblist : response.data, loaded : true})
-       console.log('Health feed Response : ', this.state.joblist)
+       console.log('Response : ', this.state.joblist)
   })
 
 }
@@ -41,11 +41,11 @@ loadjobs() {
 
 render () {
     return (
-      <Content>
+      <ScrollView style ={styles.content}>
       {  this.state.loaded ? this.state.joblist.map(item => (
                   <Jobs key={item.id.toString()} job={item} />
                 )) : null }
-      </Content>
+      </ScrollView>
     )
   }
 }
@@ -66,11 +66,11 @@ class Jobs extends React.Component {
 
  render () {
 return (
-  <TouchableOpacity onPress={() => NavigationActions.jobdetail()} >
+  <TouchableOpacity onPress={() => NavigationActions.jobdetail({job:this.props.job})} >
   <View style={styles.row} >
     <Image source={Images.logo} style ={styles.image} />
     <View style={styles.row2} >
-      <Text style={styles.boldLabelTitle}>{this.props.job.title}</Text>
+      <Text numberOfLines={1} style={styles.boldLabelTitle}>{this.props.job.title}</Text>
       <Text style={styles.boldLabel}>{this.props.job.location}</Text>
       <Text style={styles.label}>{this.props.job.company}</Text>
       <Text style={styles.label}>{this.props.job.type}</Text>
