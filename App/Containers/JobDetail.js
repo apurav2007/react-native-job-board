@@ -41,7 +41,7 @@ class JobDetail extends React.Component {
 
   render () {
     return (
-      <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={styles.container} keyboardShouldPersistTaps='always'>
+      <View style={styles.container}>
       <Container>
               <Content>
                   <Card>
@@ -88,7 +88,7 @@ class JobDetail extends React.Component {
 
               </Content>
           </Container>
-      </ScrollView>
+      </View>
     )
   }
 }
