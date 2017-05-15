@@ -4,17 +4,24 @@ import {
   ScrollView,
   TouchableOpacity,
   Text,
-  WebView
+  WebView,
+  Linking,
+  Image
 
 } from 'react-native'
-import { connect } from 'react-redux'
+import HTMLView from 'react-native-htmlview';
 
+import { connect } from 'react-redux'
 import {Images, Metrics} from '../Themes'
 import { Container, Content, Card, CardItem,Left,List, ListItem } from 'native-base';
 import LoginActions from '../Redux/LoginRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+
 import styles from './Styles/JobDetailStyles'
 import {api} from  "../Services/Api"
+
+var TimeAgo = require('react-native-timeago');
+var timestamp = "2015-06-21T06:24:44.124Z";
 class JobDetail extends React.Component {
 
   constructor (props) {
@@ -45,11 +52,14 @@ class JobDetail extends React.Component {
       <Container>
               <Content>
                   <Card>
+                    <Image style={{width: 400, height: 100}} source={{uri:this.state.jobdetail.company_logo}}/>
+                  </Card>
+                  <Card>
                     <CardItem style={{flex: 1, flexDirection: 'column',alignItems:'flex-start'}} >
                           <Text  style={styles.boldLabelTitle}>{this.props.job.title}  </Text>
                           <Text  style={styles.boldLabel}> {this.props.job.company}  </Text>
                           <Text  style={styles.label}> {this.props.job.location}   </Text>
-                          <Text style={styles.labeldate} > {this.props.job.created_at}   </Text>
+                          <Text style={styles.labeldate} >{this.props.job.created_at}  </Text>
                     </CardItem>
                   </Card>
                   <Card>
@@ -57,8 +67,7 @@ class JobDetail extends React.Component {
                           <Text style={styles.boldLabel}> Description  </Text>
                       </CardItem>
                       <CardItem>
-                          <Text> {this.state.jobdetail.description}</Text>
-
+                          <HTMLView value={this.state.jobdetail.description} />
                       </CardItem>
                   </Card>
 
@@ -74,11 +83,14 @@ class JobDetail extends React.Component {
                           </ListItem>
                           <ListItem style={{flex: 1, flexDirection: 'column',alignItems:'flex-start'}} >
                               <Text  style={styles.boldLabel}>Company Site  </Text>
-                              <Text>{this.state.jobdetail.company_url}</Text>
+                              <Text style={{color: 'blue'}}
+                                    onPress={() => Linking.openURL(this.state.jobdetail.company_url)}>
+                                {this.state.jobdetail.company_url}
+                              </Text>
                           </ListItem>
                           <ListItem style={{flex: 1, flexDirection: 'column',alignItems:'flex-start'}}>
                               <Text  style={styles.boldLabel}>Job ID  </Text>
-                              <Text>{this.state.jobdetail.type}</Text>
+                              <Text> {this.state.jobdetail.id}</Text>
                           </ListItem>
                       </List>
 
