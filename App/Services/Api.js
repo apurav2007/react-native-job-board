@@ -11,8 +11,6 @@ export const api = {
     return serviceUrl.get('positions.json', {})
   },
   getjobdetail(jobId) {
-    console.log(jobId);
-    //return serviceUrl.get('positions/'+jobId+'.json')
     return serviceUrl.get('positions/'+jobId+'.json')
   },
 }

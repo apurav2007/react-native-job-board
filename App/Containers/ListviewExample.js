@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ListView,Image, TouchableOpacity,ScrollView } from 'react-native'
-import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label,Grid,Col, Badge } from 'native-base';
+import { Container, Content,Input,Form,Item, Left,Icon,Body, Right, ListItem,Thumbnail,List,Button,Card, CardItem,Label,Grid,Col, Badge,Spinner } from 'native-base';
 import {Images, Metrics} from '../Themes'
 import { connect } from 'react-redux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
@@ -31,9 +31,9 @@ loadjobs() {
 
   api.getjob()
   .then((response) => {
-    console.log(response.data)
+    //console.log(response.data)
      this.setState({joblist : response.data, loaded : true})
-       console.log('Response : ', this.state.joblist)
+    //   console.log('Response : ', this.state.joblist)
   })
 
 }
@@ -44,7 +44,7 @@ render () {
       <ScrollView style ={styles.content}>
       {  this.state.loaded ? this.state.joblist.map(item => (
                   <Jobs key={item.id.toString()} job={item} />
-                )) : null }
+                )) : <Spinner color='green' /> }
       </ScrollView>
     )
   }

@@ -51,8 +51,8 @@ class JobDetail extends React.Component {
       <View style={styles.container}>
       <Container>
               <Content>
-                  <Card>
-                    <Image style={{width: 400, height: 100}} source={{uri:this.state.jobdetail.company_logo}}/>
+                  <Card style={{justifyContent: 'center',alignItems: 'center'}}>
+                    <Image style={{ flex: 1, width: 150,height: 150,resizeMode: 'contain'}} source={{uri:this.state.jobdetail.company_logo}}/>
                   </Card>
                   <Card>
                     <CardItem style={{flex: 1, flexDirection: 'column',alignItems:'flex-start'}} >
